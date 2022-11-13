@@ -4,13 +4,14 @@ const localVideo = document.getElementById('localVideo')
 const remoteVideo = document.getElementById('remoteVideo')
 
 const startPushBtn = document.getElementById('btnStartPush')
-const endPushBtn = document.getElementById('btnEndPush')
+const stopPushBtn = document.getElementById('btnStopPush')
 const startPullBtn = document.getElementById('btnStartPull')
-const endPullBtn = document.getElementById('btnEndPull')
+const stopPullBtn = document.getElementById('btnStopPull')
 
 startPushBtn.addEventListener('click', startPush)
-
+stopPushBtn.addEventListener('click', stopPush)
 startPullBtn.addEventListener('click', startPull)
+stopPullBtn.addEventListener('click', stopPull)
 
 const config = {}
 const offerOptions = {
@@ -28,6 +29,17 @@ function startPush() {
     window.postMessage({type: 'SS_UI_REQUEST', text: "push"}, '*')
 }
 
+function stopPush() {
+    console.log("stop push stream...")
+
+    if (pc1) {
+        pc1.close()
+        pc1 = null
+    }
+
+    localVideo.srcObject = null
+}
+
 function startPull() {
     console.log("start pull stream...")
 
@@ -36,6 +48,17 @@ function startPull() {
         onCreateAnserSuccess,
         onCreateSessionDescriptionError
     )
+}
+
+function stopPull() {
+    console.log("stop pull stream...")
+
+    if (pc2) {
+        pc2.close()
+        pc2 = null
+    }
+
+    remoteVideo.srcObject = null
 }
 
 function onCreateAnserSuccess(desc) {
