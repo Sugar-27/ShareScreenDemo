@@ -20,6 +20,7 @@ const offerOptions = {
 
 let pc1 = new RTCPeerConnection(config) // local pc
 let pc2 = new RTCPeerConnection(config) // remote pc
+let remoteStream
 
 function startPush() {
     console.log("start push stream...")
@@ -30,6 +31,7 @@ function startPush() {
 function startPull() {
     console.log("start pull stream...")
 
+    remoteVideo.srcObject = remoteStream
     pc2.createAnswer().then(
         onCreateAnserSuccess,
         onCreateSessionDescriptionError
@@ -131,7 +133,8 @@ function onCreateOfferSuccess(desc) {
 
     pc2.onaddstream = function(e) {
         console.log('pc2 receive stream, stream_id: ' + e.stream.id)
-        remoteVideo.srcObject = e.stream
+        // remoteVideo.srcObject = e.stream
+        remoteStream = e.stream
     }
 
     pc2.setRemoteDescription(desc).then(
