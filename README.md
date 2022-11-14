@@ -5,7 +5,7 @@
 请安装以下浏览器插件：
 > Chrome 插件：desktopCaptureExtension
 > 
-> 获取地址：https://github.com/webrtc/samples/tree/gh-pages/release，下载其中的zip压缩包即可
+> 获取地址：https://github.com/webrtc/samples/tree/gh-pages/release ，下载其中的zip压缩包即可
 >
 > 或者直接执行命令：wget https://github.com/webrtc/samples/blob/gh-pages/release/desktopCaptureExtension.zip
 > 
