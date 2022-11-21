@@ -19,7 +19,7 @@ go version go1.19.3 linux/amd64
 ### src文件
 源代码
 ### conf文件
-https证书文件，使用时需要将自己的证书添加到该文件中
+https证书文件，使用时需要将自己的证书（`fullchain.pem`以及`prikey.pem`)添加到该文件中
 ### static
 静态网站文件，包括html以及相对应的js代码
 ### build.sh
