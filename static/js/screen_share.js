@@ -44,8 +44,9 @@ function startPull() {
     console.log("start pull stream...")
 
     remoteVideo.srcObject = remoteStream
+
     pc2.createAnswer().then(
-        onCreateAnserSuccess,
+        onCreateAnswerSuccess,
         onCreateSessionDescriptionError
     )
 }
@@ -61,8 +62,8 @@ function stopPull() {
     remoteVideo.srcObject = null
 }
 
-function onCreateAnserSuccess(desc) {
-    console.log('anser from pc2: \n' + desc.sdp)
+function onCreateAnswerSuccess(desc) {
+    console.log('answer from pc2: \n' + desc.sdp)
 
     console.log('pc2 set local description start')
     pc2.setLocalDescription(desc).then(
@@ -142,7 +143,7 @@ function onCreateOfferSuccess(desc) {
         function() {
             onSetLocalSuccess(pc1)
         },
-        onSetSessionDescriptionError()
+        onSetSessionDescriptionError
     )
 
     // sdp交换

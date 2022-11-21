@@ -36,9 +36,8 @@ func main() {
 	http.Handle(staticUrl, http.StripPrefix(staticUrl, fs))
 
 	// 4. 启动http server
-	// go startHttp(":8080")
-	startHttp(":8080")
+	go startHttp(":8080")
 
 	// 5. 启动https server
-	// startHttps(":8081", "./conf/fullchain.pem", "./conf/privkey.pem")
+	startHttps(":8081", "./conf/fullchain.pem", "./conf/privkey.pem")
 }
